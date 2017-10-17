@@ -77,22 +77,48 @@ function showSlides() {
 }
   </script>
   <div class="main">
-    <p style="font-size: 150%">Enter Details for Enquiry:-</h2>
-    <div style="text-align: center;" class="enquiry">
-      <form class="" action="index.html" method="post">
-        <input type="text" name="" value="" placeholder="Name" required/>
-        <input type="email" name="" value="" placeholder="Email" required>
-        <input type="phone" name="" value="" placeholder="Phone No.">
-        <input type="text" name="" value="" placeholder="Date of Traval">
-        <input type="number" name="" value="" placeholder="Number of Peoples">
-        <input type="text" name="" value="" placeholder="Message" required>
-        <input type="submit" name="" value="Send Enquiry">
-      </form>
-    </div>
+
+<?php
+
+if($_SERVER['REQUEST_METHOD'] != 'POST')
+	{
+//someone is calling the file directly, which we don't want
+    echo '<p style="font-size: 150%">Enter Details for Enquiry:-</p>
+      <div style="text-align: center;" class="enquiry">
+        <form class="" action="index.php" method="post">
+          <input type="text" name="name" value="" placeholder="Name" required/>
+          <input type="email" name="email" value="" placeholder="Email" required/>
+          <input type="phone" name="phone" value="" placeholder="Phone No."/>
+          <input type="text" name="date" value="" placeholder="Date of Traval"/>
+          <input type="number" name="peopels" value="" placeholder="Number of Peoples" required/>
+          <input type="text" name="message" value="" placeholder="Message" required/>
+          <input type="submit" name="" value="Send Enquiry"/>
+        </form>
+      </div>';
+	}
+  else
+	{
+    include "connect.php";
+    $name= $_POST["name"];
+    $email = $_POST["email"];
+    $phone= $_POST["phone"];
+    $date= $_POST["date"];
+    $peopels = $_POST["peopels"];
+    $message = $_POST["message"];
+
+    $sql = "INSERT INTO enquiry(name, email, phone, adate, peoples, message)
+    VALUES ('$name','$email','$phone','$date','$peopels','$message')";
+    $result = $conn-> query($sql);
+    if($result)
+      {
+        echo '<p style="font-size: 150%; text-align: center;"><b>Thank You :)</b></p>';
+      }
+  }
+?>
     <h1 style="color:purple;">GhumghamNepal Special</h1>
   <div>
     <hr>
-    <h2>TRAVEL  & FUN</h2>
+    <h2>TRAVEL  &amp; FUN</h2>
     <div class="row">
       <div class="column">
         <div class="content"><a href="mustang.html">
@@ -133,7 +159,7 @@ function showSlides() {
   </div>
   <div>
     <hr>
-    <h2>HOTEL & LODGE</h2>
+    <h2>HOTEL &amp; LODGE</h2>
     <div class="row">
     <div class="column">
       <div class="content">
@@ -216,9 +242,6 @@ function showSlides() {
   <div>
     <hr/>
     <h2>ADVENTURE</h2>
-    <!-- <p>Resize the browser window to see the responsive effect.</p> -->
-
-    <!-- Portfolio Gallery Grid -->
     <div class="row">
     <div class="column">
       <div class="content">
@@ -260,7 +283,7 @@ function showSlides() {
 </div>
 
 <div class="footer">
-  <p>© Copyright World Media Group, LLC, 2017.<br>
+  <p>&copy; Copyright World Media Group, LLC, 2017.<br>
 <a href="aboutus.html">About Us</a> | <a href="contact.html">contact Us</a> | <a href="termsofuse.html">terms of use</a>| <a href="privacy.html">Privacy & Terms</a> <br>
 The ghumghamnepal.com website and domain are privately owned and are not operated by or affiliated with any government or municipal authority.</p>
 </div>
