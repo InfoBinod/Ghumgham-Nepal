@@ -4,6 +4,20 @@ body
   /*background-image: url('sunset.jpg');*/
   background: 	#D3D3D3;
   }
+  .enquiry input{
+    margin: 8px;
+    max-width: 300px;
+    padding: 20px;
+    height: 45px;
+    border-radius: 8px;
+    width: 100%;
+    position: relative;
+  }
+  .enquiry{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
   .bar{
     margin-top:5px;
     margin-bottom: 30px;
