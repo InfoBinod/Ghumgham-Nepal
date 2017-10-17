@@ -14,6 +14,6 @@ A student Project of Web Technology
 - Then Run the createdb.php from local server. This will create tables on database.
 
 ### Happy codding
-- [x] Finish my changes
-- [x] Push my commits to GitHub
+- [x] Finish your changes
+- [x] Push your commits to GitHub
 - [x] Open a pull request
